@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic transformations &mdash; Niimpy dev documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Preprocessing" href="../preprocessing/" />
+    <link rel="prev" title="File formats" href="../input-formats/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../" class="icon icon-home"> Niimpy
+          </a>
+              <div class="version">
+                dev
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Niimpy introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input-formats/">File formats</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Basic transformations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#extracting-single-rows-and-columns">Extracting single rows and columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#listing-unique-users">Listing unique users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-unique-values">List unique values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extract-data-of-only-one-subject">Extract data of only one subject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#renaming-a-column-or-columns">Renaming a column or columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transforming-a-column-to-a-new-value">Transforming a column to a new value</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../preprocessing/">Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summary-statistics/">Summary statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../see-also/">See also</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data stream analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../survey/">Surveys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../screen/">Screen</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../schema/">Data schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/">Database interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules/">niimpy API docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../adding-features/">Adding features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources/">About data sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aware/">Aware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aware/#survey">Survey</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Niimpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home"></a> &raquo;</li>
+      <li>Basic transformations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/basic-transformations.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basic-transformations">
+<h1>Basic transformations<a class="headerlink" href="#basic-transformations" title="Permalink to this heading"></a></h1>
+<p>This page shows some basic transformations you can do once you have read data.  Really, it is simply a pandas crash course, since pandas provides all the operations you may need and there is no need for us to re-invent things.  Pandas provides a solid but flexible base for us to build advanced operations on top of.</p>
+<p>You can read more at the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/index.html">Pandas documentation</a>.</p>
+<section id="extracting-single-rows-and-columns">
+<h2>Extracting single rows and columns<a class="headerlink" href="#extracting-single-rows-and-columns" title="Permalink to this heading"></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TZ</span> <span class="o">=</span> <span class="s1">&#39;Europe/Helsinki&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">niimpy</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">niimpy</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">niimpy</span><span class="o">.</span><span class="n">sampledata</span><span class="o">.</span><span class="n">MULTIUSER_AWAREBATTERY_CSV</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">TZ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a single column, in this case all users</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-01-09 02:20:02.924999936+02:00    jd9INuQ5BBlW
+2020-01-09 02:21:30.405999872+02:00    jd9INuQ5BBlW
+2020-01-09 02:24:12.805999872+02:00    jd9INuQ5BBlW
+2020-01-09 02:35:38.561000192+02:00    jd9INuQ5BBlW
+2020-01-09 02:35:38.953000192+02:00    jd9INuQ5BBlW
+                                           ...     
+2020-01-09 23:02:13.938999808+02:00    jd9INuQ5BBlW
+2020-01-09 23:10:37.262000128+02:00    jd9INuQ5BBlW
+2020-01-09 23:22:13.966000128+02:00    jd9INuQ5BBlW
+2020-01-09 23:32:13.959000064+02:00    jd9INuQ5BBlW
+2020-01-09 23:39:06.800000+02:00       jd9INuQ5BBlW
+Name: user, Length: 373, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a single row, in this case the 10th (note the first row is zero):</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>user                                   jd9INuQ5BBlW
+device                                 3p83yASkOb_B
+time                                 1578530592.424
+battery_level                                    76
+battery_status                                    2
+battery_health                                    2
+battery_adaptor                                   2
+datetime           2020-01-09 02:43:12.424000+02:00
+Name: 2020-01-09 02:43:12.424000+02:00, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="listing-unique-users">
+<h2>Listing unique users<a class="headerlink" href="#listing-unique-users" title="Permalink to this heading"></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;jd9INuQ5BBlW&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-unique-values">
+<h2>List unique values<a class="headerlink" href="#list-unique-values" title="Permalink to this heading"></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;battery_status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3, 2, 5])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-data-of-only-one-subject">
+<h2>Extract data of only one subject<a class="headerlink" href="#extract-data-of-only-one-subject" title="Permalink to this heading"></a></h2>
+</section>
+<section id="renaming-a-column-or-columns">
+<h2>Renaming a column or columns<a class="headerlink" href="#renaming-a-column-or-columns" title="Permalink to this heading"></a></h2>
+</section>
+<section id="transforming-a-column-to-a-new-value">
+<h2>Transforming a column to a new value<a class="headerlink" href="#transforming-a-column-to-a-new-value" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../input-formats/" class="btn btn-neutral float-left" title="File formats" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../preprocessing/" class="btn btn-neutral float-right" title="Preprocessing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, the contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

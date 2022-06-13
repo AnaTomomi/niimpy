@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Screen &mdash; Niimpy dev documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Data schema" href="../schema/" />
+    <link rel="prev" title="Surveys" href="../survey/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../" class="icon icon-home"> Niimpy
+          </a>
+              <div class="version">
+                dev
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Niimpy introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input-formats/">File formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-transformations/">Basic transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preprocessing/">Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summary-statistics/">Summary statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../see-also/">See also</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data stream analysis</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../survey/">Surveys</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Screen</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-format">Data format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#niimpy-screen-screen-off"><code class="xref py py-func docutils literal notranslate"><span class="pre">niimpy.screen.screen_off()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#niimpy-screen-screen-duration"><code class="xref py py-func docutils literal notranslate"><span class="pre">niimpy.screen.screen_duration()</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../schema/">Data schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/">Database interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules/">niimpy API docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../adding-features/">Adding features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data-sources/">About data sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aware/">Aware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aware/#survey">Survey</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Niimpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home"></a> &raquo;</li>
+      <li>Screen</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/screen.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="screen">
+<h1>Screen<a class="headerlink" href="#screen" title="Permalink to this heading"></a></h1>
+<section id="data-format">
+<h2>Data format<a class="headerlink" href="#data-format" title="Permalink to this heading"></a></h2>
+<p>We assume input screen data has the following columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">screen_status</span></code>: 0=off, 1=on, 2=locked, 3=unlocked</p></li>
+</ul>
+</section>
+<section id="niimpy-screen-screen-off">
+<h2><code class="xref py py-func docutils literal notranslate"><span class="pre">niimpy.screen.screen_off()</span></code><a class="headerlink" href="#niimpy-screen-screen-off" title="Permalink to this heading"></a></h2>
+<p>This returns a dataframe that contains screen off times.  You may think that this is a simple filtering of the screen data, but the phone can turn off while the screen is on.  Thus, the data must be combined with battery data which provides shutdown information.</p>
+<p>First we generate the sample dataframes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">niimpy</span>
+
+<span class="n">df_screen</span> <span class="o">=</span> <span class="n">niimpy</span><span class="o">.</span><span class="n">read_csv_string</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">time,screen_status</span>
+<span class="s2">0,1</span>
+<span class="s2">60,0</span>
+<span class="s2">3600,1</span>
+<span class="s2"># There is no corresponding screen off event</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s1">&#39;Europe/Helsinki&#39;</span><span class="p">)</span>
+<span class="n">df_screen</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>screen_status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1970-01-01 02:00:00+02:00</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1970-01-01 02:01:00+02:00</th>
+      <td>60</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1970-01-01 03:00:00+02:00</th>
+      <td>3600</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_battery</span> <span class="o">=</span> <span class="n">niimpy</span><span class="o">.</span><span class="n">read_csv_string</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">time,battery_status</span>
+<span class="s2"># Whole device turns off (-1) at 3660.</span>
+<span class="s2">3660,-1</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s1">&#39;Europe/Helsinki&#39;</span><span class="p">)</span>
+<span class="n">df_battery</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>battery_status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1970-01-01 03:01:00+02:00</th>
+      <td>3660</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now we can do the calculation, and we see that it returns only the off times.  At time=<code class="docutils literal notranslate"><span class="pre">03:01:00</span></code> there is an off event when the power completely turns off</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">niimpy</span><span class="o">.</span><span class="n">screen_off</span><span class="p">(</span><span class="n">df_screen</span><span class="p">,</span> <span class="n">battery</span><span class="o">=</span><span class="n">df_battery</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/rkdarst/git/niimpy/niimpy/battery.py:252: FutureWarning: Boolean inputs to the `inclusive` argument are deprecated infavour of `both` or `neither`.
+  shutdown = bat[bat[&#39;battery_status&#39;].between(-3, 0, inclusive=False)]
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>screen_status</th>
+      <th>missing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1970-01-01 02:01:00+02:00</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1970-01-01 03:01:00+02:00</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>TODO: there is some assumed timeout after a screen is on for two hours, or is that only below?</p></li>
+</ul>
+</section>
+<section id="niimpy-screen-screen-duration">
+<h2><code class="xref py py-func docutils literal notranslate"><span class="pre">niimpy.screen.screen_duration()</span></code><a class="headerlink" href="#niimpy-screen-screen-duration" title="Permalink to this heading"></a></h2>
+<p>This function computes the durations of screen being on and aggregates by day.  Just like with <code class="docutils literal notranslate"><span class="pre">screen_off</span></code> above, it combines with the battery data in order to detect other off events.  It returns</p>
+<p>TODO:</p>
+<ul class="simple">
+<li><p>timeout if on for more than two hours.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">duration</span><span class="p">,</span> <span class="n">count</span> <span class="o">=</span> <span class="n">niimpy</span><span class="o">.</span><span class="n">screen_duration</span><span class="p">(</span><span class="n">df_screen</span><span class="p">,</span> <span class="n">battery</span><span class="o">=</span><span class="n">df_battery</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No missing values
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/rkdarst/git/niimpy/niimpy/battery.py:252: FutureWarning: Boolean inputs to the `inclusive` argument are deprecated infavour of `both` or `neither`.
+  shutdown = bat[bat[&#39;battery_status&#39;].between(-3, 0, inclusive=False)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that the device has been on for 120 seconds and off for (on hour minus one minute=3540 seconds):</p>
+<ul class="simple">
+<li><p>TODO: this is wrong in one of our tests</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">duration</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>group</th>
+      <th>off</th>
+      <th>on</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1970-01-01 00:00:00+02:00</th>
+      <td>3540</td>
+      <td>60</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>group</th>
+      <th>off_count</th>
+      <th>on_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1970-01-01 00:00:00+02:00</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../survey/" class="btn btn-neutral float-left" title="Surveys" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../schema/" class="btn btn-neutral float-right" title="Data schema" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, the contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
